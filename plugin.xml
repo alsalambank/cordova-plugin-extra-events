@@ -29,7 +29,6 @@
         </config-file>
 
         <source-file src="src/android/ExtraEvents.java" target-dir="src/org/apache/cordova/extraEvents" />
-        <source-file src="src/android/CdvExtraEventsWindowCallback.java" target-dir="src/org/apache/cordova/extraEvents" />
     </platform>
 
     <!-- ios -->
