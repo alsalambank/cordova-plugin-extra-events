@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-extra-events"
+    version="1.0.0">
+    <name>CordovaPluginExtraEvents</name>
+    <description>Cordova Plugin for extra lifecycle events related to the app going to and leaving the background.</description>
+    <license>MIT</license>
+    <keywords>cordova,events,onPause,active,background</keywords>
+
+    <js-module src="www/extraEvents.js" name="ExtraEvents">
+        <clobbers target="window.plugins.ExtraEvents"/>
+    </js-module>
+
+    <engines>
+        <engine name="cordova" version=">=7.1.0"/>
+        <engine name="cordova-android" version=">=7.0.0"/>
+        <engine name="cordova-ios" version=">=4.5.0"/>
+    </engines>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ExtraEvents">
+                <param name="android-package" value="org.apache.cordova.extraEvents.ExtraEvents"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/ExtraEvents.java" target-dir="src/org/apache/cordova/extraEvents" />
+        <source-file src="src/android/CdvExtraEventsWindowCallback.java" target-dir="src/org/apache/cordova/extraEvents" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml" >
+            <feature name="ExtraEvents">
+                <param name="ios-package" value="ExtraEvents"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/ExtraEvents.h" />
+        <source-file src="src/ios/ExtraEvents.m" />
+
+        <framework src="AVFoundation.framework" />
+    </platform>
+</plugin>
